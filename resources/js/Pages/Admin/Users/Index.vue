@@ -3,7 +3,9 @@
 </script>
 
 <template>
-    <AdminLayout :title="'Dashboard'" :header="'Dashboard'">
+    <AdminLayout :title="'Dashboard'">
+        
+
             <!-- Content -->
             <main class="p-6 space-y-6">
                 <!-- Stats Cards -->
