@@ -21,8 +21,8 @@ const props = defineProps({
 
             <!-- Navigation -->
             <nav class="mt-6 flex-1">
-                <NavLink :href="route('dashboard')"
-                    class="group flex items-center gap-3 py-3 px-6  bg-purple-500 text-white hover:bg-purple-50 hover:text-purple-700 transition-all duration-200 relative overflow-hidden">
+                <NavLink :href="route('dashboard')" :active="route().current('dashboard')"
+                    >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -33,8 +33,8 @@ const props = defineProps({
                         class="absolute left-0 top-0 h-full w-1 bg-purple-600 scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></span>
                 </NavLink>
 
-                <a href="#"
-                    class="group flex items-center gap-3 py-3 px-6 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-all duration-200 relative overflow-hidden">
+                <NavLink :href="route('users')" :active="route().current('users')"
+                    >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -43,7 +43,7 @@ const props = defineProps({
                     <span class="font-medium">Users</span>
                     <span
                         class="absolute left-0 top-0 h-full w-1 bg-purple-600 scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></span>
-                </a>
+                </NavLink>
             </nav>
 
             <!-- Logout Button -->

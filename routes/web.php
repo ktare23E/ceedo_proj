@@ -20,6 +20,9 @@ Route::get('/dashboard',function(){
 })->name('dashboard');
 
 Route::get('/users',[UserController::class,'index'])->name('users');
+Route::get('/create_user',[UserController::class,'index'])->name('create_user');
+Route::get('/edit_user/{user}',[UserController::class,'index'])->name('edit_user');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
