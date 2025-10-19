@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RequirementsController;
+use App\Http\Controllers\RequirementSubmissionController;
 use App\Http\Controllers\TreasuryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -32,6 +34,8 @@ Route::post('/store_treasury',[TreasuryController::class,'store'])->name('store_
 Route::get('/edit_treasury/{user}',[TreasuryController::class,'edit'])->name('edit_treasury');
 Route::post('/update_treasury',[TreasuryController::class,'update'])->name('update_treasury');
 
+Route::get('/requirements',[RequirementsController::class,'index'])->name('requirements');
+Route::get('/submissions',[RequirementSubmissionController::class,'index'])->name('submissions');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
