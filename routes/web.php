@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TreasuryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,8 +26,9 @@ Route::post('/store_staff',[UserController::class,'store'])->name('store_staff')
 Route::get('/edit_user/{user}',[UserController::class,'edit'])->name('edit_user');
 Route::post('/update_staff',[UserController::class,'update'])->name('update_staff');
 
-Route::get('/treasury',[UserController::class,'index'])->name('treasury');
-
+Route::get('/treasury',[TreasuryController::class,'index'])->name('treasury');
+Route::get('/create_treasury',[TreasuryController::class,'create'])->name('create_treasury');
+Route::post('/store_treasury',[TreasuryController::class,'store'])->name('store_treasury');
 
 
 // Route::middleware('auth')->group(function () {

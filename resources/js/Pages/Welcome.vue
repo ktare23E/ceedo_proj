@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 import { Link } from '@inertiajs/vue3';
+import {Head} from '@inertiajs/vue3';
 
 const mobileOpen = ref(false)
 </script>
 
 <template>
+    <Head title="Welcome"/>
     <div class="font-sans bg-gray-50 text-gray-800">
         <!-- Navigation -->
         <nav class="bg-white/90 backdrop-blur-sm fixed w-full z-50 border-b border-gray-200 shadow-sm">
@@ -31,10 +33,10 @@ const mobileOpen = ref(false)
                         <!-- Register / Login Buttons -->
                         <Link :href="route('login')"
                             class="text-sm font-medium text-gray-700 hover:text-indigo-700 transition-colors">Login</Link>
-                        <a href="#"
+                        <Link :href="route('register')"
                             class="px-4 py-2 bg-indigo-700 text-white rounded-full text-sm font-medium hover:bg-indigo-800 transition-colors">
                             Register
-                        </a>
+                        </Link>
 
                         <!-- Highlight Button -->
                         <a href="#"
