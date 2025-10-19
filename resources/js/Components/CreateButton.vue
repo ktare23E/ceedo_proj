@@ -7,7 +7,7 @@
 </script>
 
 <template>
-    <Link :href="href" class="py-2 px-6 rounded-full text-white bg-blue-700 text-sm flex items-center gap-2">
+    <Link :href="href" class="py-2 px-6 rounded-full text-white bg-yellow-500 text-sm flex items-center gap-2">
     <slot></slot>
     {{ props.name }}
     </Link>
