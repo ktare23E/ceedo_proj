@@ -3,22 +3,54 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 
 const form = useForm({
     first_name: '',
     last_name: '',
+    address: '',
     email: '',
     password: '',
-    password_confirmation: '',
+    status : 'Active',
+    user_type : 'Staff'
 });
 
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    });
-};
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to register this user?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, register',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.post(route('store_staff'), {
+                onSuccess: () => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Staff Created!',
+                        text: 'The staff has been successfully created.',
+                        timer: 2000,
+                        showConfirmButton: false,
+                    }).then(() => {
+                        router.visit(route('users'));
+                    })
+                },
+                onError: () => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Registration failed',
+                        text: 'Please check the form and try again.',
+                    })
+                },
+                onFinish: () => form.reset('password', 'password_confirmation'),
+            })
+        }
+    })
+}
 </script>
 
 <template>
@@ -53,6 +85,13 @@ const submit = () => {
                         <TextInput id="last_name" type="text" class="mt-1 block w-full" v-model="form.last_name"
                             required autocomplete="family-name" />
                         <InputError class="mt-2" :message="form.errors.last_name" />
+                    </div>
+
+                    <div>
+                        <InputLabel for="last_name" value="Address" />
+                        <TextInput id="address" type="text" class="mt-1 block w-full" v-model="form.address"
+                            required autocomplete="family-name" />
+                        <InputError class="mt-2" :message="form.errors.address" />
                     </div>
 
                     <!-- Email -->

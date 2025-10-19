@@ -21,7 +21,11 @@ Route::get('/dashboard',function(){
 
 Route::get('/users',[UserController::class,'index'])->name('users');
 Route::get('/create_user',[UserController::class,'create'])->name('create_user');
+Route::post('/store_staff',[UserController::class,'store'])->name('store_staff');
 Route::get('/edit_user/{user}',[UserController::class,'index'])->name('edit_user');
+
+Route::get('/treasury',[UserController::class,'index'])->name('treasury');
+
 
 
 Route::middleware('auth')->group(function () {
