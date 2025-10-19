@@ -4,13 +4,14 @@ import { computed } from 'vue';
 import { onMounted } from 'vue';
 import CreateButton from '@/Components/CreateButton.vue';
 import DynamicTable from '@/Components/DynamicTable.vue';
+import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     users: Array
 });
 
 
-const columns = ['First Name', 'Last Name', 'Address', 'Email','User Type', 'Status', 'Action'];
+const columns = ['First Name', 'Last Name', 'Address', 'Email', 'Status', 'Action'];
 
 const rows = computed(() => {
     return props.users.map(account => ({
@@ -19,7 +20,6 @@ const rows = computed(() => {
         'Last Name': account.last_name,
         'Address': account.address,
         'Email': account.email,
-        'User Type': account.user_type,
         'Status': account.status,
     }));
 });
@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <AdminLayout :title="'Users'" :header="'Users'">
+    <AdminLayout :title="'Staff'" :header="'Staff List'">
         <div class="mt-4 w-[98%] flex justify-end">
             <CreateButton :name="'Create Staff'" :href="route('create_user')">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -45,12 +45,12 @@ onMounted(() => {
         <div class="bg-white rounded-lg shadow p-6 flex items-center justify-center mt-4 w-[95%] mx-auto">
             <div class="w-full">
                 <DynamicTable :columns="columns" :rows="rows" :class="'text-sm'">
-                    <!-- <template #Action="{ row }">
+                    <template #Action="{ row }">
                         <Link :href="route('edit_user', row.id)"
-                            class="bg-[#0F766E] text-white px-3 py-1 rounded-sm text-sm hover:bg-blue-700">
-                        edit
+                            class="bg-purple-500 text-white px-3 py-1 rounded-sm text-sm hover:bg-blue-700">
+                                edit
                         </Link>
-                    </template> -->
+                    </template>
                 </DynamicTable>
             </div>
         </div>

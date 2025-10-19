@@ -33,4 +33,24 @@ class UserController extends Controller
 
         User::create($data);
     }
+
+    public function edit(User $user){
+
+        return Inertia::render('Admin/Users/Edit',[
+            'user' => $user
+        ]);
+    }
+
+    public function update(Request $request){
+        $data = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'status' => 'required',
+            'user_type' => 'required',
+        ]);
+
+        User::find($request->id)->update($data);
+    }
 }
