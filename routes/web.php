@@ -29,6 +29,8 @@ Route::post('/update_staff',[UserController::class,'update'])->name('update_staf
 Route::get('/treasury',[TreasuryController::class,'index'])->name('treasury');
 Route::get('/create_treasury',[TreasuryController::class,'create'])->name('create_treasury');
 Route::post('/store_treasury',[TreasuryController::class,'store'])->name('store_treasury');
+Route::get('/edit_treasury/{user}',[TreasuryController::class,'edit'])->name('edit_treasury');
+Route::post('/update_treasury',[TreasuryController::class,'update'])->name('update_treasury');
 
 
 // Route::middleware('auth')->group(function () {

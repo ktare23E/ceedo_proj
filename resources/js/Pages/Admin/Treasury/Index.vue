@@ -46,7 +46,7 @@ onMounted(() => {
             <div class="w-full">
                 <DynamicTable :columns="columns" :rows="rows" :class="'text-sm'">
                     <template #Action="{ row }">
-                        <Link :href="route('edit_user', row.id)"
+                        <Link :href="route('edit_treasury', row.id)"
                             class="bg-purple-500 text-white px-3 py-1 rounded-sm text-sm hover:bg-blue-700">
                                 edit
                         </Link>
