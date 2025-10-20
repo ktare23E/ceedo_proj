@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Requirements extends Model
+class Requirement extends Model
 {
     protected $fillable = [
         'requirement_name',
@@ -14,6 +14,6 @@ class Requirements extends Model
     ];
 
     public function submissions(){
-        return $this->hasMany(RequirementSubmission::class);
+        return $this->hasMany(VendorRequirementSubmission::class);
     }
 }
