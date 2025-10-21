@@ -13,7 +13,7 @@ const goBack = () => {
 </script>
 
 <template>
-    <AdminLayout :title="`View ${props.establishment.name}`" :header="`View ${props.establishment.name}`">
+    <AdminLayout :title="`${props.establishment.name} Details`" :header="`${props.establishment.name} Details`">
         <div class="max-w-7xl mx-auto p-6 space-y-10">
 
             <!-- BACK BUTTON -->
@@ -60,7 +60,7 @@ const goBack = () => {
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-xl font-semibold text-gray-800">Stalls</h3>
                     <Link
-                        href="#"
+                        :href="route('create_stall',props.establishment.id)"
                         class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-200"
                     >
                         + Create Stall
