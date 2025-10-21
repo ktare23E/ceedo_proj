@@ -11,16 +11,14 @@ const props = defineProps({
 });
 
 
-const columns = ['First Name', 'Last Name', 'Address', 'Email', 'Status', 'Action'];
+const columns = ['Requirement', 'Description', 'File Type Allowed', 'Action'];
 
 const rows = computed(() => {
     return props.requirements.map(data => ({
         id: data.id,
-        'First Name': data.first_name,
-        'Last Name': data.last_name,
-        'Address': data.address,
-        'Email': data.email,
-        'Status': data.status,
+        'Requirement': data.requirement_name,
+        'Description': data.description,
+        'File Type Allowed': data.file_type_allowed,
     }));
 });
 
@@ -34,7 +32,7 @@ onMounted(() => {
 <template>
     <AdminLayout :title="'Treasury'" :header="'Treasury List'">
         <div class="mt-4 w-[98%] flex justify-end">
-            <CreateButton :name="'Create Treasrer'" :href="route('create_treasury')">
+            <CreateButton :name="'Create Requirement'" :href="route('create_requirement')">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -46,7 +44,7 @@ onMounted(() => {
             <div class="w-full">
                 <DynamicTable :columns="columns" :rows="rows" :class="'text-sm'">
                     <template #Action="{ row }">
-                        <Link :href="route('edit_treasury', row.id)"
+                        <Link :href="route('edit_requirement', row.id)"
                             class="bg-purple-500 text-white px-3 py-1 rounded-sm text-sm hover:bg-blue-700">
                                 edit
                         </Link>

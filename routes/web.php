@@ -35,6 +35,11 @@ Route::get('/edit_treasury/{user}',[TreasuryController::class,'edit'])->name('ed
 Route::post('/update_treasury',[TreasuryController::class,'update'])->name('update_treasury');
 
 Route::get('/requirements',[RequirementsController::class,'index'])->name('requirements');
+Route::get('/requirements',[RequirementsController::class,'index'])->name('requirements');
+Route::get('/create_requirement',[RequirementsController::class,'create'])->name('create_requirement');
+Route::post('/store_requirement',[RequirementsController::class,'store'])->name('store_requirement');
+Route::get('/edit_requirement/{requirement}',[RequirementsController::class,'edit'])->name('edit_requirement');
+
 Route::get('/submissions',[RequirementSubmissionController::class,'index'])->name('submissions');
 
 // Route::middleware('auth')->group(function () {

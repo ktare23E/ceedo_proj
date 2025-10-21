@@ -2,12 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Requirement;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class RequirementsController extends Controller
 {
     public function index(){
-        return Inertia::render('Admin/Requirement/Index');    
+        $requirements = Requirement::all();
+
+
+        return Inertia::render('Admin/Requirement/Index',[
+            'requirements' => $requirements
+        ]);    
+    }
+
+    public function create(){
+        return Inertia::render('Admin/Requirement/Create');
+    }
+
+    public function store(Request $request){
+        $data = $request->validate([
+            'requirement_name' => 'required',
+            'description' => 'required',
+            'file_type_allowed' => 'required'
+        ]);
+
+        Requirement::create($data);
     }
 }
