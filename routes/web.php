@@ -49,6 +49,8 @@ Route::get('/establishments',[EstablishmentController::class,'index'])->name('es
 Route::get('/create_establishment',[EstablishmentController::class,'create'])->name('create_establishment');
 Route::post('/store_establishment',[EstablishmentController::class,'store'])->name('store_establishment');
 Route::get('/edit_establishment/{establishment}',[EstablishmentController::class,'edit'])->name('edit_establishment');
+Route::post('/update_establishment',[EstablishmentController::class,'update'])->name('update_establishment');
+
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

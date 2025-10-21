@@ -42,4 +42,21 @@ class EstablishmentController extends Controller
 
         return redirect()->route('establishments')->with('success', 'Establishments created successfully!');
     }
+
+    public function edit(Establishment $establishment){
+
+        return Inertia::render('Admin/Establishments/Edit',[
+            'establishment' => $establishment
+        ]);
+    }
+
+    public function update(Request $request){
+        $data = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'address' => 'required',
+        ]);
+
+        Establishment::find($request->id)->update($data);
+    }
 }

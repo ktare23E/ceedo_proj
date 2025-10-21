@@ -7,45 +7,35 @@ import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import TextArea from '@/Components/TextArea.vue';
 
+const props = defineProps({
+    establishment : Object
+})
+
 const form = useForm({
-    name: '',
-    description: '',
-    address: '',
-    images: [],
+    id : props.establishment.id,
+    name: props.establishment.name,
+    description: props.establishment.description,
+    address: props.establishment.address,
 });
 
-const handleFiles = (e) => {
-    const files = Array.from(e.target.files);
-
-    if (files.length > 5) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Limit Exceeded',
-            text: 'You can only upload up to 5 images.',
-        });
-        e.target.value = ''; // reset file input
-        return;
-    }
-    form.images = files;
-}
 
 const submit = () => {
     Swal.fire({
         title: 'Are you sure?',
-        text: "Do you want to create this establishment?",
+        text: "Do you want to update this establishment?",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, create it',
+        confirmButtonText: 'Yes, update it',
     }).then((result) => {
         if (result.isConfirmed) {
-            form.post(route('store_establishment'), {
+            form.post(route('update_establishment'), {
                 onSuccess: () => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Establishment Created!',
-                        text: 'The establishment has been successfully created.',
+                        title: 'Establishment Updated!',
+                        text: 'The establishment has been successfully updated.',
                         timer: 2000,
                         showConfirmButton: false,
                     }).then(() => {
@@ -66,7 +56,7 @@ const submit = () => {
 </script>
 
 <template>
-    <AdminLayout :title="'Create Establishment'" :header="'Create Establishment'">
+    <AdminLayout :title="'Edit Establishment'" :header="'Edit Establishment'">
         <div class="flex items-center justify-center min-h-[80vh]">
             <div class="bg-white shadow-xl rounded-2xl p-8 w-3/4 border border-gray-100 relative">
 
@@ -80,7 +70,7 @@ const submit = () => {
                 <span class="font-medium">Back</span>
                 </Link>
 
-                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Create Establishment</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Edit Establishment</h2>
 
                 <form @submit.prevent="submit" class="space-y-4">
                     <!-- First Name -->
@@ -105,22 +95,12 @@ const submit = () => {
                         <InputError class="mt-2" :message="form.errors.address" />
                     </div>
 
-                    <div class="mt-2 col-span-2">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            for="file_input">Upload establishments images(up to 5 images only)</label>
-                        <input @change="handleFiles" multiple accept="image/png, image/jpeg, image/jpg"
-                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            aria-describedby="file_input_help" id="file_input" type="file">
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help"> PNG, JPG And
-                            JPEG</p>
-                    </div>
-
                     <!-- Footer -->
                     <div class="flex items-center justify-between pt-4">
                         <button
                             class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg transition-all duration-200 w-full"
                             :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Create Establishment
+                            Update Establishment
                         </button>
                     </div>
                 </form>
