@@ -15,4 +15,8 @@ class Establishment extends Model
     public function stalls(){
         return $this->hasMany(Stall::class);
     }
+
+    public function images(){
+        return $this->hasMany(EstablishmentImages::class);
+    }
 }

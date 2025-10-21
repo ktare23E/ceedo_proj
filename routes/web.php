@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstablishmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequirementsController;
 use App\Http\Controllers\RequirementSubmissionController;
@@ -43,6 +44,11 @@ Route::post('/update_requirement',[RequirementsController::class,'update'])->nam
 
 
 Route::get('/submissions',[RequirementSubmissionController::class,'index'])->name('submissions');
+
+Route::get('/establishments',[EstablishmentController::class,'index'])->name('establishments');
+Route::get('/create_establishment',[EstablishmentController::class,'create'])->name('create_establishment');
+Route::post('/store_establishment',[EstablishmentController::class,'store'])->name('store_establishment');
+Route::get('/edit_establishment/{establishment}',[EstablishmentController::class,'edit'])->name('edit_establishment');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
