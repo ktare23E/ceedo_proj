@@ -50,6 +50,7 @@ Route::get('/create_establishment',[EstablishmentController::class,'create'])->n
 Route::post('/store_establishment',[EstablishmentController::class,'store'])->name('store_establishment');
 Route::get('/edit_establishment/{establishment}',[EstablishmentController::class,'edit'])->name('edit_establishment');
 Route::post('/update_establishment',[EstablishmentController::class,'update'])->name('update_establishment');
+Route::get('/view_establishment/{establishment}',[EstablishmentController::class,'view'])->name('view_establishment');
 
 
 // Route::middleware('auth')->group(function () {

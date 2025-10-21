@@ -44,10 +44,16 @@ onMounted(() => {
             <div class="w-full">
                 <DynamicTable :columns="columns" :rows="rows" :class="'text-sm'">
                     <template #Action="{ row }">
-                        <Link :href="route('edit_establishment', row.id)"
+                        <div class="space-x-1">
+                            <Link :href="route('edit_establishment', row.id)"
                             class="bg-purple-500 text-white px-3 py-1 rounded-sm text-sm hover:bg-blue-700">
                                 edit
-                        </Link>
+                            </Link>
+                            <Link :href="route('view_establishment', row.id)"
+                                class="bg-orange-400 text-white px-3 py-1 rounded-sm text-sm">
+                                    view
+                            </Link>
+                        </div>
                     </template>
                 </DynamicTable>
             </div>
