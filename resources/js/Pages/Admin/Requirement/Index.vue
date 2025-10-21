@@ -18,7 +18,7 @@ const rows = computed(() => {
         id: data.id,
         'Requirement': data.requirement_name,
         'Description': data.description,
-        'File Type Allowed': data.file_type_allowed,
+        'File Type Allowed': data.file_type_allowed.toUpperCase(),
     }));
 });
 
@@ -30,7 +30,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <AdminLayout :title="'Treasury'" :header="'Treasury List'">
+    <AdminLayout :title="'Requirement'" :header="'Requirement List'">
         <div class="mt-4 w-[98%] flex justify-end">
             <CreateButton :name="'Create Requirement'" :href="route('create_requirement')">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

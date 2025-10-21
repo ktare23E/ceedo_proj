@@ -30,4 +30,21 @@ class RequirementsController extends Controller
 
         Requirement::create($data);
     }
+
+    public function edit(Requirement $requirement){
+
+        return Inertia::render('Admin/Requirement/Edit',[
+            'requirement' => $requirement
+        ]);
+    }
+
+    public function update(Request $request){
+        $data = $request->validate([
+            'requirement_name' => 'required',
+            'description' => 'required',
+            'file_type_allowed' => 'required'
+        ]);
+
+        Requirement::find($request->id)->update($data);
+    }
 }

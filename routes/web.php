@@ -39,6 +39,8 @@ Route::get('/requirements',[RequirementsController::class,'index'])->name('requi
 Route::get('/create_requirement',[RequirementsController::class,'create'])->name('create_requirement');
 Route::post('/store_requirement',[RequirementsController::class,'store'])->name('store_requirement');
 Route::get('/edit_requirement/{requirement}',[RequirementsController::class,'edit'])->name('edit_requirement');
+Route::post('/update_requirement',[RequirementsController::class,'update'])->name('update_requirement');
+
 
 Route::get('/submissions',[RequirementSubmissionController::class,'index'])->name('submissions');
 
