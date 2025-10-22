@@ -21,45 +21,52 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard',function(){
-    return Inertia::render('Admin/Dashboard');
-})->name('dashboard');
 
-Route::get('/users',[UserController::class,'index'])->name('users');
-Route::get('/create_user',[UserController::class,'create'])->name('create_user');
-Route::post('/store_staff',[UserController::class,'store'])->name('store_staff');
-Route::get('/edit_user/{user}',[UserController::class,'edit'])->name('edit_user');
-Route::post('/update_staff',[UserController::class,'update'])->name('update_staff');
+Route::middleware('auth')->group(function(){
+    Route::middleware(['userType:Admin'])->group(function(){
+        Route::get('/dashboard',function(){
+            return Inertia::render('Admin/Dashboard');
+        })->name('dashboard');
+        
+        Route::get('/users',[UserController::class,'index'])->name('users');
+        Route::get('/create_user',[UserController::class,'create'])->name('create_user');
+        Route::post('/store_staff',[UserController::class,'store'])->name('store_staff');
+        Route::get('/edit_user/{user}',[UserController::class,'edit'])->name('edit_user');
+        Route::post('/update_staff',[UserController::class,'update'])->name('update_staff');
+        
+        Route::get('/treasury',[TreasuryController::class,'index'])->name('treasury');
+        Route::get('/create_treasury',[TreasuryController::class,'create'])->name('create_treasury');
+        Route::post('/store_treasury',[TreasuryController::class,'store'])->name('store_treasury');
+        Route::get('/edit_treasury/{user}',[TreasuryController::class,'edit'])->name('edit_treasury');
+        Route::post('/update_treasury',[TreasuryController::class,'update'])->name('update_treasury');
+        
+        Route::get('/requirements',[RequirementsController::class,'index'])->name('requirements');
+        Route::get('/requirements',[RequirementsController::class,'index'])->name('requirements');
+        Route::get('/create_requirement',[RequirementsController::class,'create'])->name('create_requirement');
+        Route::post('/store_requirement',[RequirementsController::class,'store'])->name('store_requirement');
+        Route::get('/edit_requirement/{requirement}',[RequirementsController::class,'edit'])->name('edit_requirement');
+        Route::post('/update_requirement',[RequirementsController::class,'update'])->name('update_requirement');
+        
+        
+        Route::get('/submissions',[RequirementSubmissionController::class,'index'])->name('submissions');
+        
+        Route::get('/establishments',[EstablishmentController::class,'index'])->name('establishments');
+        Route::get('/create_establishment',[EstablishmentController::class,'create'])->name('create_establishment');
+        Route::post('/store_establishment',[EstablishmentController::class,'store'])->name('store_establishment');
+        Route::get('/edit_establishment/{establishment}',[EstablishmentController::class,'edit'])->name('edit_establishment');
+        Route::post('/update_establishment',[EstablishmentController::class,'update'])->name('update_establishment');
+        Route::get('/view_establishment/{establishment}',[EstablishmentController::class,'view'])->name('view_establishment');
+        Route::post('/establishments/images/{image}/update', [EstablishmentImagesController::class, 'update'])
+            ->name('establishments.image.update');
+        
+        Route::get('/create_stall/{establishment}',[StallController::class,'create'])->name('create_stall');
+        Route::post('/store_stall',[StallController::class,'store'])->name('store_stall');
+        Route::get('/edit_stall/{stall}',[StallController::class,'edit'])->name('edit_stall');
+        Route::post('/update_stall',[StallController::class,'update'])->name('update_stall');
+    });
+});
 
-Route::get('/treasury',[TreasuryController::class,'index'])->name('treasury');
-Route::get('/create_treasury',[TreasuryController::class,'create'])->name('create_treasury');
-Route::post('/store_treasury',[TreasuryController::class,'store'])->name('store_treasury');
-Route::get('/edit_treasury/{user}',[TreasuryController::class,'edit'])->name('edit_treasury');
-Route::post('/update_treasury',[TreasuryController::class,'update'])->name('update_treasury');
 
-Route::get('/requirements',[RequirementsController::class,'index'])->name('requirements');
-Route::get('/requirements',[RequirementsController::class,'index'])->name('requirements');
-Route::get('/create_requirement',[RequirementsController::class,'create'])->name('create_requirement');
-Route::post('/store_requirement',[RequirementsController::class,'store'])->name('store_requirement');
-Route::get('/edit_requirement/{requirement}',[RequirementsController::class,'edit'])->name('edit_requirement');
-Route::post('/update_requirement',[RequirementsController::class,'update'])->name('update_requirement');
-
-
-Route::get('/submissions',[RequirementSubmissionController::class,'index'])->name('submissions');
-
-Route::get('/establishments',[EstablishmentController::class,'index'])->name('establishments');
-Route::get('/create_establishment',[EstablishmentController::class,'create'])->name('create_establishment');
-Route::post('/store_establishment',[EstablishmentController::class,'store'])->name('store_establishment');
-Route::get('/edit_establishment/{establishment}',[EstablishmentController::class,'edit'])->name('edit_establishment');
-Route::post('/update_establishment',[EstablishmentController::class,'update'])->name('update_establishment');
-Route::get('/view_establishment/{establishment}',[EstablishmentController::class,'view'])->name('view_establishment');
-Route::post('/establishments/images/{image}/update', [EstablishmentImagesController::class, 'update'])
-    ->name('establishments.image.update');
-
-Route::get('/create_stall/{establishment}',[StallController::class,'create'])->name('create_stall');
-Route::post('/store_stall',[StallController::class,'store'])->name('store_stall');
-Route::get('/edit_stall/{stall}',[StallController::class,'edit'])->name('edit_stall');
-Route::post('/update_stall',[StallController::class,'update'])->name('update_stall');
 
 
 // Route::middleware('auth')->group(function () {
