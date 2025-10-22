@@ -16,4 +16,14 @@ class Payment extends Model
         'status',
         
     ];
+
+    public function user() { 
+        return $this->belongsTo(User::class); 
+    }
+
+    public function payable() { 
+        return $this->morphTo(); 
+    } // for Stall or CottageBooking
+
+
 }

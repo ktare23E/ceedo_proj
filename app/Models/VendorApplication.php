@@ -22,4 +22,8 @@ class VendorApplication extends Model
     public function stall(){
         return $this->belongsTo(Stall::class);
     }
+
+    public function submissions(){
+        return $this->hasMany(VendorRequirementSubmission::class);
+    }
 }

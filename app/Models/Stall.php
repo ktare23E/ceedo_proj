@@ -19,6 +19,10 @@ class Stall extends Model
         return $this->belongsTo(Establishment::class);
     }
 
+    public function vendorApplication(){
+        return $this->hasOne(VendorApplication::class);
+    }
+
     public function images(){
         return $this->hasMany(StallImages::class);
     }
@@ -29,5 +33,9 @@ class Stall extends Model
 
     public function firstImage(){
         return $this->hasOne(StallImages::class)->orderBy('id');
+    }
+
+    public function payments(){
+        return $this->morphMany(Payment::class,'payable');
     }
 }

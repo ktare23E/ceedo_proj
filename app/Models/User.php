@@ -55,7 +55,23 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
-    public function reminders(){
+    public function rentReminders(){
         return $this->hasMany(RentReminders::class);
+    }
+
+    public function vendorApplication(){
+        return $this->hasMany(VendorApplication::class);
+    }
+
+    public function payments(){
+        return $this->hasMany(Payment::class);
+    }
+
+    public function verifiedPayments(){
+        return $this->hasMany(Payment::class,'verified_by');
+    }
+
+    public function cottageBookings(){
+        return $this->hasMany(FloatingCottageBooking::class);
     }
 }

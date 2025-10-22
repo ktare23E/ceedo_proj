@@ -57,4 +57,12 @@ class StallController extends Controller
 
         Stall::find($request->id)->update($data);
     }
+
+    public function view(Stall $stall){
+
+        return Inertia::render('Admin/Stall/View',[
+            'stall' => $stall,
+            'images' => $stall->images
+        ]);
+    }
 }

@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function(){
         Route::post('/store_stall',[StallController::class,'store'])->name('store_stall');
         Route::get('/edit_stall/{stall}',[StallController::class,'edit'])->name('edit_stall');
         Route::post('/update_stall',[StallController::class,'update'])->name('update_stall');
+        Route::get('/view_stall/{stall}',[StallController::class,'view'])->name('view_stall');
+
     });
 });
 

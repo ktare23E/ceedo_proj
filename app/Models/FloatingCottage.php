@@ -18,4 +18,8 @@ class FloatingCottage extends Model
     public function schedules(){
         return $this->hasMany(FloatingCottageSchedule::class);
     }
+
+    public function bookings(){
+        return $this->hasMany(FloatingCottageBooking::class);
+    }
 }

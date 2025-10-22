@@ -211,6 +211,11 @@ const goBack = () => {
                 <p class="text-gray-500">
                     <span class="font-medium text-gray-700">Address:</span> {{ props.establishment.address }}
                 </p>
+                
+                <p class="text-gray-500">
+                    <span class="font-medium text-gray-700">Total Number of Stalls:</span> {{ props.stalls.length }}
+                </p>
+                
                 <div class="flex items-center justify-between mt-5">
                     <p class="text-sm text-gray-400">
                         Created: {{ new Date(props.establishment.created_at).toLocaleDateString() }}
@@ -256,7 +261,7 @@ const goBack = () => {
                                 <span class="block text-gray-400 text-xs uppercase tracking-wider">Price (per
                                     day)</span>
                                 <span class="font-semibold text-green-600">₱{{ parseFloat(stall.price).toFixed(2)
-                                    }}</span>
+                                }}</span>
                             </div>
 
                             <div>
@@ -281,16 +286,22 @@ const goBack = () => {
                         </div>
 
                         <!-- Actions -->
-                        <div class="flex gap-2 mt-4">
-                            <button
-                                class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg text-sm font-medium transition">
-                                View
-                            </button>
+                        <div class="flex items-center gap-3 mt-5">
+                            <!-- View Button -->
+                            <Link :href="route('view_stall', stall.id)"
+                                class="flex items-center justify-center flex-1 gap-2 bg-yellow-500 hover:bg-yellow-600 text-white py-2.5 rounded-lg font-semibold text-sm shadow-sm hover:shadow transition duration-200">
+                            <i class="fas fa-eye"></i>
+                            <span>View</span>
+                            </Link>
+
+                            <!-- Edit Button -->
                             <Link :href="route('edit_stall', stall.id)"
-                                class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg text-sm font-medium text-center transition">
-                            Edit
+                                class="flex items-center justify-center flex-1 gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg font-semibold text-sm shadow-sm hover:shadow transition duration-200">
+                            <i class="fas fa-edit"></i>
+                            <span>Edit</span>
                             </Link>
                         </div>
+
                     </div>
                 </div>
 
