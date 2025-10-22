@@ -121,7 +121,7 @@ const goBack = () => {
                             </button>
                             <Link :href="route('edit_stall', stall.id)"
                                 class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg text-sm font-medium text-center transition">
-                            Edit
+                                Edit
                             </Link>
                         </div>
                     </div>

@@ -56,6 +56,7 @@ Route::get('/view_establishment/{establishment}',[EstablishmentController::class
 Route::get('/create_stall/{establishment}',[StallController::class,'create'])->name('create_stall');
 Route::post('/store_stall',[StallController::class,'store'])->name('store_stall');
 Route::get('/edit_stall/{stall}',[StallController::class,'edit'])->name('edit_stall');
+Route::post('/update_stall',[StallController::class,'update'])->name('update_stall');
 
 
 // Route::middleware('auth')->group(function () {

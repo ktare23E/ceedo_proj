@@ -38,4 +38,23 @@ class StallController extends Controller
             }
         }
     }
+
+    public function edit(Stall $stall){
+
+        return Inertia::render('Admin/Stall/Edit',[
+            'stall' => $stall
+        ]);
+    }
+
+    public function update(Request $request){
+        $data = $request->validate([
+            'stall_number' => 'required',
+            'price' => 'required',
+            'status' => 'required',
+            'description' => 'required',
+            'size' => 'required',
+        ]);
+
+        Stall::find($request->id)->update($data);
+    }
 }
