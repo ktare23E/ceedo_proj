@@ -60,11 +60,18 @@ class EstablishmentController extends Controller
         Establishment::find($request->id)->update($data);
     }
 
-    public function view(Establishment $establishment){
-
-        return Inertia::render('Admin/Establishments/View',[
+    public function view(Establishment $establishment)
+    {
+        $establishment->load([
+            'images',
+            'stalls.firstImage',
+        ]);
+    
+        return Inertia::render('Admin/Establishments/View', [
             'establishment' => $establishment,
-            'images' => $establishment->images
+            'images' => $establishment->images,
+            'stalls' => $establishment->stalls,
         ]);
     }
+    
 }

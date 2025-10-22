@@ -26,4 +26,8 @@ class Stall extends Model
     public function rentReminders(){
         return $this->hasMany(RentReminders::class);
     }
+
+    public function firstImage(){
+        return $this->hasOne(StallImages::class)->orderBy('id');
+    }
 }
