@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EstablishmentController;
+use App\Http\Controllers\EstablishmentImagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequirementsController;
 use App\Http\Controllers\RequirementSubmissionController;
@@ -52,6 +53,8 @@ Route::post('/store_establishment',[EstablishmentController::class,'store'])->na
 Route::get('/edit_establishment/{establishment}',[EstablishmentController::class,'edit'])->name('edit_establishment');
 Route::post('/update_establishment',[EstablishmentController::class,'update'])->name('update_establishment');
 Route::get('/view_establishment/{establishment}',[EstablishmentController::class,'view'])->name('view_establishment');
+Route::post('/establishments/images/{image}/update', [EstablishmentImagesController::class, 'update'])
+    ->name('establishments.image.update');
 
 Route::get('/create_stall/{establishment}',[StallController::class,'create'])->name('create_stall');
 Route::post('/store_stall',[StallController::class,'store'])->name('store_stall');
