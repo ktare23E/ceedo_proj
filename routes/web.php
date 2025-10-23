@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequirementsController;
 use App\Http\Controllers\RequirementSubmissionController;
 use App\Http\Controllers\StallController;
+use App\Http\Controllers\StallImagesController;
 use App\Http\Controllers\TreasuryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -64,6 +65,8 @@ Route::middleware('auth')->group(function(){
         Route::get('/edit_stall/{stall}',[StallController::class,'edit'])->name('edit_stall');
         Route::post('/update_stall',[StallController::class,'update'])->name('update_stall');
         Route::get('/view_stall/{stall}',[StallController::class,'view'])->name('view_stall');
+        Route::post('/stalls/image/{id}/update', [StallImagesController::class, 'update'])->name('stalls.image.update');
+
 
     });
 });

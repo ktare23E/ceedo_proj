@@ -62,7 +62,10 @@ class StallController extends Controller
 
         return Inertia::render('Admin/Stall/View',[
             'stall' => $stall,
-            'images' => $stall->images
+            'images' => $stall->images,
+            'activeVendor' => $stall->vendorApplication?->user,
+            'rentHistory' => $stall->rentReminders, // or whatever relation holds past rent logs
+
         ]);
     }
 }
