@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EstablishmentController;
 use App\Http\Controllers\EstablishmentImagesController;
+use App\Http\Controllers\FloatingCottageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequirementsController;
 use App\Http\Controllers\RequirementSubmissionController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\StallController;
 use App\Http\Controllers\StallImagesController;
 use App\Http\Controllers\TreasuryController;
 use App\Http\Controllers\UserController;
+use App\Models\FloatingCottage;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -66,6 +68,12 @@ Route::middleware('auth')->group(function(){
         Route::post('/update_stall',[StallController::class,'update'])->name('update_stall');
         Route::get('/view_stall/{stall}',[StallController::class,'view'])->name('view_stall');
         Route::post('/stalls/image/{id}/update', [StallImagesController::class, 'update'])->name('stalls.image.update');
+
+
+        Route::get('/cottages',[FloatingCottageController::class,'index'])->name('cottages');
+        Route::get('/create_cottages',[FloatingCottageController::class,'create'])->name('create_cottages');
+        Route::post('/store_cottage',[FloatingCottageController::class,'store'])->name('store_cottage');
+        Route::get('/edit_cottage/{cottage}',[FloatingCottageController::class,'edit'])->name('edit_cottage');
 
 
     });
