@@ -74,6 +74,8 @@ Route::middleware('auth')->group(function(){
         Route::get('/create_cottages',[FloatingCottageController::class,'create'])->name('create_cottages');
         Route::post('/store_cottage',[FloatingCottageController::class,'store'])->name('store_cottage');
         Route::get('/edit_cottage/{cottage}',[FloatingCottageController::class,'edit'])->name('edit_cottage');
+        Route::post('/update_cottage',[FloatingCottageController::class,'update'])->name('update_cottage');
+
 
 
     });

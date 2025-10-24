@@ -49,6 +49,20 @@ class FloatingCottageController extends Controller
     }
 
     public function edit(FloatingCottage $cottage){
-        
+
+        return Inertia::render('Admin/Cottages/Edit',[
+            'cottage' => $cottage
+        ]);
+    }
+
+    public function update(Request $request){
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price_per_hour' => 'required|numeric',
+            'capacity' => 'required|integer',
+        ]);
+
+        FloatingCottage::find($request->id)->update($data);
     }
 }
